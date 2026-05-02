@@ -2,7 +2,7 @@
 
 > AI-powered study toolkit for every learner. Built with Google Gemini.
 
-![ScholarAI Banner](public/og-image.png)
+![ScholarAI Banner](public/favicon.svg)
 
 [![React](https://img.shields.io/badge/React-18-blue)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-5-purple)](https://vitejs.dev)
