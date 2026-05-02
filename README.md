@@ -2,7 +2,8 @@
 
 > AI-powered study toolkit for every learner. Built with Google Gemini.
 
-![ScholarAI Banner](public/favicon.svg)
+<img src="public/favicon.svg" width="80" alt="ScholarAI Logo" />
+<br />
 
 [![React](https://img.shields.io/badge/React-18-blue)](https://react.dev)
 [![Vite](https://img.shields.io/badge/Vite-5-purple)](https://vitejs.dev)
@@ -44,25 +45,24 @@
 - A Gemini API key from [aistudio.google.com](https://aistudio.google.com)
 
 ### Installation
-
-\`\`\`bash
-git clone https://github.com/OmkarAKadam/Scholar-AI.git
-cd scholar-ai
-npm install
-\`\`\`
+```bash
+- git clone https://github.com/OmkarAKadam/Scholar-AI.git
+- cd scholar-ai
+- npm install
+```
 
 ### Environment Setup
 
-\`\`\`bash
+```bash
 cp .env.example .env
 # Add your Gemini API key to .env
-\`\`\`
+```
 
 ### Run Locally
 
-\`\`\`bash
+```bash
 npm run dev
-\`\`\`
+```
 
 ## 🏗️ Tech Stack
 
@@ -77,7 +77,7 @@ npm run dev
 
 ## 📁 Project Structure
 
-\`\`\`
+```
 src/
 ├── components/
 │   ├── aria/        ← Aria avatar + chat window
@@ -88,7 +88,7 @@ src/
 ├── services/        ← Gemini API calls
 ├── hooks/           ← Custom React hooks
 └── utils/           ← PDF parser + helpers
-\`\`\`
+```
 
 ## 🤝 Contributing
 
