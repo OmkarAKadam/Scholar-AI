@@ -46,7 +46,7 @@
 ### Installation
 
 \`\`\`bash
-git clone https://github.com/yourusername/scholar-ai.git
+git clone https://github.com/OmkarAKadam/Scholar-AI.git
 cd scholar-ai
 npm install
 \`\`\`
@@ -71,7 +71,7 @@ npm run dev
 | Frontend | React 18 + Vite |
 | Styling | Tailwind CSS |
 | Routing | React Router v6 |
-| AI | Google Gemini 1.5 Flash |
+| AI | Google Gemini 2.5 Flash |
 | PDF Parsing | pdf.js |
 | Deployment | Google Cloud Run |
 
