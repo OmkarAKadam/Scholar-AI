@@ -67,7 +67,8 @@ export default function AriaChatWindow({ onClose, currentPage }) {
         <div className="flex items-center gap-3">
           <div className="relative w-8 h-8 rounded-full bg-brand-light dark:bg-[#0D1117] border border-brand-primary/20 dark:border-[#30363D] overflow-hidden flex items-end justify-center">
             <div className="w-8 h-8 flex items-end justify-center">
-              <AriaAvatar expression={isTyping ? 'thinking' : 'happy'} size={38} />
+              {/* <AriaAvatar expression={isTyping ? 'thinking' : 'happy'} size={38} /> */}
+              <img src="/aria-avatar.png" alt="Aria" className="w-6 h-6 object-cover" />
             </div>
           </div>
           <div>
@@ -93,7 +94,8 @@ export default function AriaChatWindow({ onClose, currentPage }) {
             {msg.role === 'ai' && (
               <div className="w-6 h-6 rounded-full bg-brand-light dark:bg-[#0D1117] flex items-end justify-center shrink-0 border border-brand-primary/10 dark:border-[#30363D] overflow-hidden mt-auto mb-1">
                 <div className="w-6 h-6 flex items-end justify-center">
-                  <AriaAvatar expression="idle" size={30} />
+                  {/* <AriaAvatar expression="idle" size={30} /> */}
+                  <img src="/aria-avatar.png" alt="Aria" className="w-6 h-6 object-cover" />
                 </div>
               </div>
             )}
