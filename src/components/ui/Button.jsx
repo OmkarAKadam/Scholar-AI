@@ -6,28 +6,28 @@ export default function Button({
   className = '',
   ...props 
 }) {
-  const baseStyles = "inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+  const baseStyles = "inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-[#0D1117] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
   
   const colors = {
     brand: {
       primary: 'bg-brand-primary text-white hover:bg-brand-dark focus:ring-brand-primary border border-transparent',
-      secondary: 'bg-brand-light text-brand-dark hover:bg-green-100 focus:ring-brand-primary border border-transparent',
-      outline: 'bg-white text-brand-primary hover:bg-brand-light focus:ring-brand-primary border border-brand-primary',
+      secondary: 'bg-brand-light text-brand-dark hover:bg-green-100 focus:ring-brand-primary border border-transparent dark:bg-[#16351F] dark:text-[#E6EDF3] dark:hover:bg-[#1A6B32]',
+      outline: 'bg-white text-brand-primary hover:bg-brand-light focus:ring-brand-primary border border-brand-primary dark:bg-[#161B22] dark:hover:bg-[#0D1117]',
     },
     study: {
       primary: 'bg-study text-white hover:bg-study-dark focus:ring-study border border-transparent',
-      secondary: 'bg-study-light text-study-dark hover:bg-blue-100 focus:ring-study border border-transparent',
-      outline: 'bg-white text-study hover:bg-study-light focus:ring-study border border-study',
+      secondary: 'bg-study-light text-study-dark hover:bg-blue-100 focus:ring-study border border-transparent dark:bg-[#10213F] dark:text-[#E6EDF3] dark:hover:bg-[#1D4ED8]',
+      outline: 'bg-white text-study hover:bg-study-light focus:ring-study border border-study dark:bg-[#161B22] dark:hover:bg-[#0D1117]',
     },
     resume: {
       primary: 'bg-resume text-white hover:bg-resume-dark focus:ring-resume border border-transparent',
-      secondary: 'bg-resume-light text-resume-dark hover:bg-amber-100 focus:ring-resume border border-transparent',
-      outline: 'bg-white text-resume hover:bg-resume-light focus:ring-resume border border-resume',
+      secondary: 'bg-resume-light text-resume-dark hover:bg-amber-100 focus:ring-resume border border-transparent dark:bg-[#3A2605] dark:text-[#E6EDF3] dark:hover:bg-[#B45309]',
+      outline: 'bg-white text-resume hover:bg-resume-light focus:ring-resume border border-resume dark:bg-[#161B22] dark:hover:bg-[#0D1117]',
     },
     code: {
       primary: 'bg-code text-white hover:bg-code-dark focus:ring-code border border-transparent',
-      secondary: 'bg-code-light text-code-dark hover:bg-purple-100 focus:ring-code border border-transparent',
-      outline: 'bg-white text-code hover:bg-code-light focus:ring-code border border-code',
+      secondary: 'bg-code-light text-code-dark hover:bg-purple-100 focus:ring-code border border-transparent dark:bg-[#24154D] dark:text-[#E6EDF3] dark:hover:bg-[#6D28D9]',
+      outline: 'bg-white text-code hover:bg-code-light focus:ring-code border border-code dark:bg-[#161B22] dark:hover:bg-[#0D1117]',
     }
   }
 

@@ -6,27 +6,17 @@ import AriaChatWindow from './AriaChatWindow'
 export default function AriaWidget() {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
-  
-  // Close chat when navigating to a new page
-  // useEffect(() => {
-  //   setIsOpen(false)
-  // }, [location.pathname])
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+    <div className="fixed bottom-0 right-2 z-50 flex flex-col items-end">
       {isOpen && (
-        <AriaChatWindow 
-          onClose={() => setIsOpen(false)} 
+        <AriaChatWindow
+          onClose={() => setIsOpen(false)}
           currentPage={location.pathname}
         />
       )}
-      
+
       <div className="relative group mt-4">
-        {!isOpen && (
-          <div className="absolute -inset-2 bg-brand-primary rounded-full opacity-20 animate-ping z-0 pointer-events-none"></div>
-        )}
-        
-        {/* Tooltip */}
         {!isOpen && (
           <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-neutral-900 text-white text-xs font-medium px-3 py-1.5 rounded shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity z-20 pointer-events-none">
             Chat with Aria ✨
@@ -35,12 +25,12 @@ export default function AriaWidget() {
         )}
 
         <button
+          type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className={`relative z-10 w-20 h-20 rounded-full border-4 shadow-xl transition-all duration-300 flex items-end justify-center overflow-hidden
-            ${isOpen ? 'border-brand-primary bg-brand-light scale-90 shadow-md' : 'border-white bg-white hover:border-brand-light'}
-          `}
+          className="relative z-10 block border-0 bg-transparent p-0 transition-transform duration-300 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-4"
+          aria-label={isOpen ? 'Close Aria chat' : 'Open Aria chat'}
         >
-          <AriaAvatar expression={isOpen ? 'happy' : 'idle'} />
+          <AriaAvatar expression={isOpen ? 'happy' : 'idle'} size={170} />
         </button>
       </div>
     </div>

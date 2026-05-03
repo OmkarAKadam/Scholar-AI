@@ -5,6 +5,7 @@ import Button from '../components/ui/Button'
 import FlashCard from '../components/ui/FlashCard'
 import LoadingSpinner from '../components/ui/LoadingSpinner'
 import { extractTextFromPDF } from '../utils/parsePdf'
+import { parseMarkdown } from '../utils/parseMarkdown'
 import { askQuestion, generateFlashcards, generateQuiz, explainSimply, generateSummary } from '../services/gemini'
 
 export default function StudyBuddy() {
@@ -178,8 +179,8 @@ export default function StudyBuddy() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-50 flex flex-col">
-      <div className="bg-study text-white py-12 px-4 text-center">
+    <div className="min-h-screen bg-neutral-50 dark:bg-[#0D1117] flex flex-col">
+      <div className="animated-header text-white py-12 px-4 text-center" style={{ background: 'linear-gradient(135deg, #3B82F6, #1D4ED8, #2563EB)' }}>
         <h1 className="text-4xl font-bold mb-4">Study Buddy</h1>
         <p className="text-study-light text-lg">Upload your notes — AI handles the rest</p>
       </div>
@@ -189,8 +190,8 @@ export default function StudyBuddy() {
           
           {/* Left Column - Controls */}
           <div className="lg:col-span-5 flex flex-col gap-6">
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-neutral-200">
-              <h2 className="text-xl font-semibold mb-4 text-neutral-800">1. Upload Document</h2>
+            <div className="bg-white dark:bg-[#161B22] p-6 rounded-xl shadow-sm border border-neutral-200 dark:border-[#30363D]">
+              <h2 className="text-xl font-semibold mb-4 text-neutral-800 dark:text-[#E6EDF3]">1. Upload Document</h2>
               <FileUpload 
                 accept=".pdf,.txt" 
                 onFileSelect={handleFileUpload} 
@@ -205,8 +206,8 @@ export default function StudyBuddy() {
             </div>
 
             {documentText && (
-              <div className="bg-white p-6 rounded-xl shadow-sm border border-neutral-200">
-                <h2 className="text-xl font-semibold mb-4 text-neutral-800">2. Choose Mode</h2>
+              <div className="bg-white dark:bg-[#161B22] p-6 rounded-xl shadow-sm border border-neutral-200 dark:border-[#30363D]">
+                <h2 className="text-xl font-semibold mb-4 text-neutral-800 dark:text-[#E6EDF3]">2. Choose Mode</h2>
                 <TabBar 
                   tabs={['Q&A', 'Flashcards', 'Quiz', 'ELI5', 'Summary']} 
                   activeTab={activeTab} 
@@ -217,9 +218,9 @@ export default function StudyBuddy() {
                 <div className="mt-6">
                   {activeTab === 'Q&A' && (
                     <div className="flex flex-col gap-4">
-                      <p className="text-sm text-neutral-600">Ask any question based on your uploaded document.</p>
+                      <p className="text-sm text-neutral-600 dark:text-[#8B949E]">Ask any question based on your uploaded document.</p>
                       <textarea 
-                        className="w-full p-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-study outline-none resize-none"
+                        className="w-full p-3 border border-neutral-300 dark:border-[#30363D] dark:bg-[#0D1117] dark:text-[#E6EDF3] rounded-lg focus:ring-2 focus:ring-study outline-none resize-none"
                         rows="3"
                         placeholder="Ask a question about your document..."
                         value={question}
@@ -233,7 +234,7 @@ export default function StudyBuddy() {
 
                   {activeTab === 'Flashcards' && (
                     <div className="flex flex-col gap-4">
-                      <p className="text-sm text-neutral-600">Generate 10 key flashcards to memorize the material.</p>
+                      <p className="text-sm text-neutral-600 dark:text-[#8B949E]">Generate 10 key flashcards to memorize the material.</p>
                       <Button color="study" onClick={handleGenerateFlashcards} disabled={isLoading}>
                         Generate Flashcards
                       </Button>
@@ -242,13 +243,13 @@ export default function StudyBuddy() {
 
                   {activeTab === 'Quiz' && (
                     <div className="flex flex-col gap-4">
-                      <p className="text-sm text-neutral-600">Test your knowledge with a generated quiz.</p>
+                      <p className="text-sm text-neutral-600 dark:text-[#8B949E]">Test your knowledge with a generated quiz.</p>
                       <div className="flex gap-2">
                         {['easy', 'medium', 'hard'].map(level => (
                           <button
                             key={level}
                             onClick={() => setDifficulty(level)}
-                            className={`px-4 py-2 rounded-lg text-sm font-medium capitalize transition-colors ${difficulty === level ? 'bg-study text-white' : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'}`}
+                            className={`px-4 py-2 rounded-lg text-sm font-medium capitalize transition-colors ${difficulty === level ? 'bg-study text-white' : 'bg-neutral-100 dark:bg-[#0D1117] text-neutral-600 dark:text-[#8B949E] hover:bg-neutral-200 dark:hover:bg-[#161B22]'}`}
                           >
                             {level}
                           </button>
@@ -262,9 +263,9 @@ export default function StudyBuddy() {
 
                   {activeTab === 'ELI5' && (
                     <div className="flex flex-col gap-4">
-                      <p className="text-sm text-neutral-600">Paste any confusing concept for a simple explanation.</p>
+                      <p className="text-sm text-neutral-600 dark:text-[#8B949E]">Paste any confusing concept for a simple explanation.</p>
                       <textarea 
-                        className="w-full p-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-study outline-none resize-none"
+                        className="w-full p-3 border border-neutral-300 dark:border-[#30363D] dark:bg-[#0D1117] dark:text-[#E6EDF3] rounded-lg focus:ring-2 focus:ring-study outline-none resize-none"
                         rows="4"
                         placeholder="Paste any concept or confusing paragraph..."
                         value={eli5Concept}
@@ -278,7 +279,7 @@ export default function StudyBuddy() {
 
                   {activeTab === 'Summary' && (
                     <div className="flex flex-col gap-4">
-                      <p className="text-sm text-neutral-600">Get a structured summary with TLDR and key terms.</p>
+                      <p className="text-sm text-neutral-600 dark:text-[#8B949E]">Get a structured summary with TLDR and key terms.</p>
                       <Button color="study" onClick={handleGenerateSummary} disabled={isLoading}>
                         Generate Summary
                       </Button>
@@ -291,11 +292,11 @@ export default function StudyBuddy() {
 
           {/* Right Column - Output */}
           <div className="lg:col-span-7">
-            <div className="bg-white rounded-xl shadow-sm border border-neutral-200 h-full min-h-[500px] p-6">
+            <div className="bg-white dark:bg-[#161B22] rounded-xl shadow-sm border border-neutral-200 dark:border-[#30363D] h-full min-h-[500px] p-6">
               {!documentText && !isLoading ? (
-                <div className="h-full flex flex-col items-center justify-center text-neutral-400">
-                  <svg className="w-24 h-24 mb-4 text-neutral-200" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
-                  <p className="text-xl font-medium text-neutral-500">Upload a document to get started</p>
+                <div className="h-full flex flex-col items-center justify-center text-neutral-400 dark:text-[#8B949E]">
+                  <svg className="w-24 h-24 mb-4 text-neutral-200 dark:text-[#30363D]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                  <p className="text-xl font-medium text-neutral-500 dark:text-[#8B949E]">Upload a document to get started</p>
                 </div>
               ) : isLoading ? (
                 <div className="h-full flex items-center justify-center">
@@ -306,11 +307,15 @@ export default function StudyBuddy() {
                   {activeTab === 'Q&A' && (
                     <div className="flex flex-col gap-4 h-full max-h-[600px] overflow-y-auto pr-2">
                       {chatHistory.length === 0 ? (
-                        <p className="text-neutral-500 italic text-center mt-10">Ask a question to start the conversation.</p>
+                        <p className="text-neutral-500 dark:text-[#8B949E] italic text-center mt-10">Ask a question to start the conversation.</p>
                       ) : (
                         chatHistory.map((msg, idx) => (
-                          <div key={idx} className={`p-4 rounded-xl max-w-[85%] ${msg.role === 'user' ? 'bg-study-light text-study-dark self-end ml-auto' : 'bg-neutral-100 text-neutral-800 self-start mr-auto'}`}>
-                            <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                          <div key={idx} className={`p-4 rounded-xl max-w-[85%] ${msg.role === 'user' ? 'bg-study-light dark:bg-[#10213F] text-study-dark dark:text-[#E6EDF3] self-end ml-auto' : 'bg-neutral-100 dark:bg-[#0D1117] text-neutral-800 dark:text-[#E6EDF3] self-start mr-auto'}`}>
+                            {msg.role === 'ai' ? (
+                              <div className="text-sm whitespace-pre-wrap" dangerouslySetInnerHTML={{ __html: parseMarkdown(msg.content) }} />
+                            ) : (
+                              <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                            )}
                           </div>
                         ))
                       )}
@@ -333,7 +338,7 @@ export default function StudyBuddy() {
                         >
                           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
                         </button>
-                        <span className="text-sm font-medium text-neutral-600">Card {currentCardIndex + 1} of {flashcards.length}</span>
+                        <span className="text-sm font-medium text-neutral-600 dark:text-[#8B949E]">Card {currentCardIndex + 1} of {flashcards.length}</span>
                         <button 
                           onClick={() => setCurrentCardIndex(Math.min(flashcards.length - 1, currentCardIndex + 1))}
                           disabled={currentCardIndex === flashcards.length - 1}
@@ -350,12 +355,12 @@ export default function StudyBuddy() {
                       {!quizFinished ? (
                         <>
                           <div className="flex justify-between items-center mb-6">
-                            <span className="text-sm font-medium text-neutral-500">Question {currentQuizIndex + 1} of {quiz.length}</span>
-                            <div className="w-48 bg-neutral-200 rounded-full h-2">
+                            <span className="text-sm font-medium text-neutral-500 dark:text-[#8B949E]">Question {currentQuizIndex + 1} of {quiz.length}</span>
+                            <div className="w-48 bg-neutral-200 dark:bg-[#30363D] rounded-full h-2">
                               <div className="bg-study h-2 rounded-full" style={{ width: `${((currentQuizIndex) / quiz.length) * 100}%` }}></div>
                             </div>
                           </div>
-                          <h3 className="text-xl font-bold text-neutral-900 mb-6">{quiz[currentQuizIndex].question}</h3>
+                          <h3 className="text-xl font-bold text-neutral-900 dark:text-[#E6EDF3] mb-6">{quiz[currentQuizIndex].question}</h3>
                           <div className="space-y-3 mb-8">
                             {quiz[currentQuizIndex].options.map((opt, idx) => {
                               const isSelected = selectedOption === opt;
@@ -365,11 +370,11 @@ export default function StudyBuddy() {
                               
                               let btnClass = "w-full text-left p-4 rounded-xl border-2 transition-all ";
                               if (!selectedOption) {
-                                btnClass += isSelected ? "border-study bg-study-light text-study-dark" : "border-neutral-200 hover:border-study text-neutral-700 hover:bg-neutral-50";
+                                btnClass += isSelected ? "border-study bg-study-light dark:bg-[#10213F] text-study-dark dark:text-[#E6EDF3]" : "border-neutral-200 dark:border-[#30363D] hover:border-study text-neutral-700 dark:text-[#8B949E] hover:bg-neutral-50 dark:hover:bg-[#0D1117]";
                               } else {
                                 if (showCorrect) btnClass += "border-green-500 bg-green-50 text-green-800";
                                 else if (showWrong) btnClass += "border-red-500 bg-red-50 text-red-800";
-                                else btnClass += "border-neutral-200 text-neutral-400 opacity-50";
+                                else btnClass += "border-neutral-200 dark:border-[#30363D] text-neutral-400 dark:text-[#8B949E] opacity-50";
                               }
 
                               return (
@@ -403,8 +408,8 @@ export default function StudyBuddy() {
                           <div className="w-24 h-24 bg-study-light rounded-full flex items-center justify-center mb-6">
                             <span className="text-3xl font-bold text-study">{quizScore}/{quiz.length}</span>
                           </div>
-                          <h2 className="text-2xl font-bold mb-2">Quiz Complete!</h2>
-                          <p className="text-neutral-600 mb-8">You got {Math.round((quizScore / quiz.length) * 100)}% correct.</p>
+                          <h2 className="text-2xl font-bold dark:text-[#E6EDF3] mb-2">Quiz Complete!</h2>
+                          <p className="text-neutral-600 dark:text-[#8B949E] mb-8">You got {Math.round((quizScore / quiz.length) * 100)}% correct.</p>
                           <Button color="study" onClick={handleGenerateQuiz}>Retake Quiz</Button>
                         </div>
                       )}
@@ -412,26 +417,16 @@ export default function StudyBuddy() {
                   )}
 
                   {activeTab === 'ELI5' && eli5Result && (
-                    <div className="bg-study-light border border-study border-opacity-20 rounded-2xl p-8 relative">
-                      <div className="absolute -top-6 -left-6 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-md">
+                    <div className="bg-study-light dark:bg-[#0D1117] border border-study dark:border-[#30363D] border-opacity-20 rounded-2xl p-8 relative">
+                      <div className="absolute -top-6 -left-6 w-12 h-12 bg-white dark:bg-[#161B22] rounded-full flex items-center justify-center shadow-md">
                         <span className="text-2xl">💡</span>
                       </div>
-                      <p className="text-study-dark text-lg leading-relaxed">{eli5Result}</p>
+                      <div className="text-study-dark dark:text-[#E6EDF3] text-lg leading-relaxed" dangerouslySetInnerHTML={{ __html: parseMarkdown(eli5Result) }} />
                     </div>
                   )}
 
                   {activeTab === 'Summary' && summaryResult && (
-                    <div className="prose prose-study max-w-none text-neutral-800">
-                      {summaryResult.split('\n').map((line, idx) => {
-                        if (line.startsWith('**')) {
-                          return <h3 key={idx} className="text-lg font-bold text-study mt-6 mb-2">{line.replace(/\*\*/g, '')}</h3>
-                        }
-                        if (line.startsWith('•')) {
-                          return <li key={idx} className="ml-4 mb-1">{line.substring(1).trim()}</li>
-                        }
-                        return <p key={idx} className="mb-2">{line}</p>
-                      })}
-                    </div>
+                    <div className="prose prose-study max-w-none text-neutral-800 dark:text-[#E6EDF3]" dangerouslySetInnerHTML={{ __html: parseMarkdown(summaryResult) }} />
                   )}
                 </div>
               )}

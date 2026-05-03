@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-900 text-neutral-300">
+    <footer className="bg-neutral-900 dark:bg-[#0D1117] text-neutral-300 dark:text-[#8B949E] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
@@ -13,15 +13,15 @@ export default function Footer() {
                   <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                 </svg>
               </div>
-              <span className="font-bold text-xl text-white">ScholarAI</span>
+              <span className="font-bold text-xl text-white dark:text-[#E6EDF3]">ScholarAI</span>
             </div>
-            <p className="text-sm text-neutral-400">
+            <p className="text-sm text-neutral-400 dark:text-[#8B949E]">
               AI-powered study toolkit for every learner. Flashcards, quizzes, resume feedback, and code reviews in one place.
             </p>
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-4">Tools</h3>
+            <h3 className="text-sm font-semibold text-white dark:text-[#E6EDF3] tracking-wider uppercase mb-4">Tools</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/study-buddy" className="text-sm hover:text-study transition-colors">Study Buddy</Link>
@@ -36,8 +36,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-white tracking-wider uppercase mb-4">Built With</h3>
-            <ul className="space-y-2 text-sm text-neutral-400">
+            <h3 className="text-sm font-semibold text-white dark:text-[#E6EDF3] tracking-wider uppercase mb-4">Built With</h3>
+            <ul className="space-y-2 text-sm text-neutral-400 dark:text-[#8B949E]">
               <li>Google Gemini API</li>
               <li>React + Vite</li>
               <li>Tailwind CSS</li>
@@ -46,7 +46,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-neutral-800 text-sm text-center text-neutral-500">
+        <div className="mt-8 pt-8 border-t border-neutral-800 dark:border-[#30363D] text-sm text-center text-neutral-500 dark:text-[#8B949E]">
           <p>© 2026 ScholarAI · Built for Google Build with AI Workshop</p>
         </div>
       </div>

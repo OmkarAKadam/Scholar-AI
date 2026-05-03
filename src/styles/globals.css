@@ -1,6 +1,222 @@
 @import "tailwindcss";
 @config "../../tailwind.config.js";
 
+:root {
+  --bg-primary: #F9FAFB;
+  --bg-secondary: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --border-color: #E5E7EB;
+  --text-primary: #111827;
+  --text-muted: #6B7280;
+  --navbar-bg: #FFFFFF;
+}
+
+html {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+html.dark {
+  --bg-primary: #0D1117;
+  --bg-secondary: #161B22;
+  --bg-card: #161B22;
+  --border-color: #30363D;
+  --text-primary: #E6EDF3;
+  --text-muted: #8B949E;
+  --navbar-bg: #161B22;
+}
+
 body {
   font-family: 'Inter', sans-serif;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0px);
+    opacity: var(--particle-opacity, 0.08);
+  }
+
+  100% {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+}
+
+.code-particle {
+  animation: floatUp linear infinite;
+}
+
+.shape-particle {
+  --particle-opacity: 0.04;
+}
+
+.dark .shape-particle {
+  --particle-opacity: 0.08;
+}
+
+.hero-grid {
+  background-image: radial-gradient(circle, #2F8D46 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.06;
+}
+
+.dark .hero-grid {
+  background-image: radial-gradient(circle, #60C8F0 1px, transparent 1px);
+  opacity: 0.06;
+}
+
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.35) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  animation: dotGlow 5s ease-in-out infinite;
+}
+
+.dark .hero-grid-bg {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.3) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+html:not(.dark) .hero-grid-bg {
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.15) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+/* Fade edges — dots visible in center, fade toward edges */
+.hero-grid-mask {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse 85% 85% at 50% 50%,
+      transparent 40%,
+      #000000 100%);
+}
+
+.dark .hero-grid-mask {
+  background: radial-gradient(ellipse 85% 85% at 50% 50%,
+      transparent 40%,
+      #000000 100%);
+}
+
+html:not(.dark) .hero-grid-mask {
+  background: radial-gradient(ellipse 85% 85% at 50% 50%,
+      transparent 40%,
+      #FAFAFA 100%);
+}
+
+@keyframes dotGlow {
+
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes cursorBlink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: cursorBlink 0.7s infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-header {
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+.nav-active-study {
+  border-bottom: 2px solid #3B82F6;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+}
+
+.nav-active-resume {
+  border-bottom: 2px solid #F59E0B;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+}
+
+.nav-active-code {
+  border-bottom: 2px solid #8B5CF6;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+}
+
+@keyframes drawLine {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+.draw-line {
+  animation: drawLine 1s ease forwards;
+}
+
+@keyframes checkmarkPop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  70% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.checkmark-pop {
+  animation: checkmarkPop 0.4s ease forwards;
+}
+
+@keyframes dotBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }

@@ -10,7 +10,7 @@ import CodeReviewer from './pages/CodeReviewer'
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-neutral-50 font-inter flex flex-col">
+      <div className="min-h-screen bg-neutral-50 dark:bg-[#0D1117] transition-colors duration-300 font-inter flex flex-col">
         <Navbar />
         <main className="flex-1">
           <Routes>
